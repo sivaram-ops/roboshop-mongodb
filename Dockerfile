@@ -10,7 +10,7 @@ WORKDIR /docker-entrypoint-initdb.d
 
 # 3. LEAST PRIVILEGE: The official Mongo image creates a 'mongodb' user (UID 999).
 # We change ownership of the init scripts so MongoDB can read them securely without needing root.
-COPY --chown=999:999 *.js .
+COPY --chown=999:999 *.js ./
 
 # 4. IMMUTABILITY: Ensure the initialization scripts are read-only to prevent accidental modification.
 RUN chmod 0444 *.js
